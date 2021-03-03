@@ -51,7 +51,7 @@ def get_basic_data() -> str:
 		page = int(page_str) if (int(page_str) > 0) else 1
 
 	first_idx = (page-1)*items_per_page
-
+	print(combined_df.columns)
 	
 	return jsonify(data = combined_df.where(pd.notnull(combined_df), None).to_dict(orient = "records"))
 
