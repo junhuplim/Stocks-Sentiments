@@ -8,7 +8,7 @@ import os
 import pandas as pd
 
 from tickers import main as update_reddit_mentions
-from analysis import main as update_financial_data
+from finance import main as update_financial_data
 
 app = Flask(__name__)
 cors = CORS(app)
