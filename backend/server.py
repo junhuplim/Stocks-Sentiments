@@ -23,7 +23,7 @@ def ensure_data_exists():
 		update_reddit_mentions()
 
 	if not os.path.exists(financial_filename):
-		update_financial_data()
+		sentiments = update_financial_data()
 
 @app.route('/get-basic-data', methods=['GET'])
 def get_basic_data() -> str:

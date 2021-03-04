@@ -66,7 +66,7 @@ class TickerCounts:
         df_tick = pd.DataFrame(counts.items(), columns=['Ticker', 'Mentions'])
         df_tick = df_tick[df_tick['Mentions'] > 3]
         df_tick = df_tick.sort_values(by=['Mentions'], ascending=False)
-        top_three_tickers = df_tick[:5]['Ticker'].values
+        top_three_tickers = df_tick[:3]['Ticker'].values
 
         data_directory = Path('./data')
         data_directory.mkdir(parents=True, exist_ok=True)
@@ -80,6 +80,7 @@ def main():
     master_df, top_tickers = ticket.get_data()
     witAnalysis = WitAnalysis()
     sentiments = witAnalysis.get_sentiments(master_df, top_tickers)
+    return sentiments
 
 
 if __name__ == '__main__':

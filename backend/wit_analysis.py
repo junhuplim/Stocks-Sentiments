@@ -1,5 +1,7 @@
 import os, re
 from wit import Wit
+from pathlib import Path
+import datetime as dt
 from dotenv import load_dotenv
 
 load_dotenv()   
@@ -27,6 +29,7 @@ class WitAnalysis:
         return sentiment['intents']
     
     def extract_traits(self, sentiment):
+        print(sentiment)
         if len(sentiment['traits']) == 0:
             return ''
         return sentiment['traits']['wit$sentiment'][0]['value']
@@ -38,12 +41,13 @@ class WitAnalysis:
             sentiment_df['sentiments'] = sentiment_df['title'].apply(self.extract_sentiments)
             sentiment_df['intents'] = sentiment_df['sentiments'].apply(self.extract_intents)
             sentiment_df['traits'] = sentiment_df['sentiments'].apply(self.extract_traits)
-            tickers_sentiments.append(sentiment_df)
-            print(ticker)
-            print('================================================================')
-            print('trait', sentiment_df['traits'].values)
-            print('================================================================')
-            print('intent', sentiment_df['intents'].values)
-        
+            tickers_sentiments.append((sentiment_df, ticker))
+
+        for sentiment, ticker in tickers_sentiments:
+            data_directory = Path('./data/sentiments')
+            data_directory.mkdir(parents=True, exist_ok=True)
+            output_path = data_directory / f'{dt.date.today()}_{ticker}_sentiment_df.csv'
+            sentiment.to_csv(output_path, index=False)
+
         return tickers_sentiments
         
