@@ -15,6 +15,7 @@ from typing import Set
 import pandas as pd
 import praw
 from tqdm import tqdm
+from wit_analysis import WitAnalysis
 
 Post = namedtuple('Post', 'id,title,score,comments,upvote_ratio,total_awards')
 
@@ -57,25 +58,29 @@ class TickerCounts:
         df_posts = pd.DataFrame(self._get_posts())
 
         # Extract tickers from titles & count them
-        tickers = df_posts['title'].apply(self.extract_ticker)
+        df_posts['extracted'] = df_posts['title'].apply(self.extract_ticker)
+        tickers = df_posts['extracted']
         counts = Counter(chain.from_iterable(tickers))
 
         # Create DataFrame of just mentions & remove any occurring less than 3 or less
         df_tick = pd.DataFrame(counts.items(), columns=['Ticker', 'Mentions'])
         df_tick = df_tick[df_tick['Mentions'] > 3]
         df_tick = df_tick.sort_values(by=['Mentions'], ascending=False)
+        top_three_tickers = df_tick[:5]['Ticker'].values
 
         data_directory = Path('./data')
         data_directory.mkdir(parents=True, exist_ok=True)
-        
-
         output_path = data_directory / f'{dt.date.today()}_tick_df.csv'
         df_tick.to_csv(output_path, index=False)
-        print(df_tick.head())
+
+        return df_posts, top_three_tickers
 
 def main():
     ticket = TickerCounts()
-    ticket.get_data()
+    master_df, top_tickers = ticket.get_data()
+    witAnalysis = WitAnalysis()
+    sentiments = witAnalysis.get_sentiments(master_df, top_tickers)
+
 
 if __name__ == '__main__':
     main()
