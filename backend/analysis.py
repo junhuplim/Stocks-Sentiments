@@ -6,7 +6,6 @@ from pathlib import Path
 import pandas as pd
 import yfinance as yf
 
-
 class FinanceAnalysis:
 
     def analyze(self):
@@ -31,7 +30,6 @@ class FinanceAnalysis:
         # Save to file to load into yahoo analysis script
         output_path = data_directory / f'{dt.date.today()}_financial_df.csv'
         df_best.to_csv(output_path, index=False)
-        print(df_best.head())
 
     def calculate_change(self, start: float, end: float) -> float:
         """Use Yahoo Finance API to get the relevant data."""

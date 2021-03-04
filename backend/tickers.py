@@ -79,9 +79,7 @@ def main():
     ticket = TickerCounts()
     master_df, top_tickers = ticket.get_data()
     witAnalysis = WitAnalysis()
-    sentiments = witAnalysis.get_sentiments(master_df, top_tickers)
-    return sentiments
-
+    witAnalysis.get_sentiments(master_df, top_tickers)
 
 if __name__ == '__main__':
     main()

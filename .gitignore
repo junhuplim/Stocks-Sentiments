@@ -1,3 +1,7 @@
 praw.ini
 __pycache__
 data
+.env
+backend/node_modules
+backend/package.json
+backend/package-lock.json

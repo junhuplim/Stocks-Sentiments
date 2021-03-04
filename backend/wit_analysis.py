@@ -29,7 +29,6 @@ class WitAnalysis:
         return sentiment['intents']
     
     def extract_traits(self, sentiment):
-        print(sentiment)
         if len(sentiment['traits']) == 0:
             return ''
         return sentiment['traits']['wit$sentiment'][0]['value']

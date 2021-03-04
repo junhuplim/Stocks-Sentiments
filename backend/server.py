@@ -14,24 +14,23 @@ app = Flask(__name__)
 cors = CORS(app)
 
 def ensure_data_exists():
-	data_directory = "./data"
+	data_directory = "./backend/data"
 	date_created = datetime.today().strftime('%Y-%m-%d')
 	mentions_filename = f"{data_directory}/{date_created}_tick_df.csv"
 	financial_filename = f"{data_directory}/{date_created}_financial_df.csv"
-
 	if not os.path.exists(mentions_filename):
 		update_reddit_mentions()
 
 	if not os.path.exists(financial_filename):
-		sentiments = update_financial_data()
+		update_financial_data()
 
 @app.route('/get-basic-data', methods=['GET'])
 def get_basic_data() -> str:
 	# Make sure we have today's data (as the server may run for multiple days)
 	ensure_data_exists()
-
+	
 	# Read the dataframes
-	data_directory = "./data"
+	data_directory = "./backend/data"
 	date_created = datetime.today().strftime('%Y-%m-%d')
 	mentions_filename = f"{data_directory}/{date_created}_tick_df.csv"
 	financial_filename = f"{data_directory}/{date_created}_financial_df.csv"
@@ -50,10 +49,12 @@ def get_basic_data() -> str:
 	if page_str is not None:
 		page = int(page_str) if (int(page_str) > 0) else 1
 
-	first_idx = (page-1)*items_per_page
-	print(combined_df.columns)
-	
+	first_idx = (page-1)*items_per_page	
 	return jsonify(data = combined_df.where(pd.notnull(combined_df), None).to_dict(orient = "records"))
+
+@app.errorhandler(500)
+def internal_error(error):
+    return error
 
 def main():
     ensure_data_exists()
