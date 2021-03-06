@@ -40,7 +40,7 @@ class TickerCounts:
 
     def _get_posts(self):
         # Scrape subreddits. Currently it fetches additional data, only using title for now
-        reddit = praw.Reddit('ClientSecrets')
+        reddit = praw.Reddit('RedditSecrets')
         subreddits = '+'.join(self.subreddits)
         new_bets = reddit.subreddit(subreddits).new(limit=self.webscraper_limit)
 
