@@ -1,15 +1,12 @@
 # Reddit Stocks Sentiments
-Scrapes data from Reddit from selected subreddits and filters the top 30 penny stocks based on number of mentions. 
-
-I then use Wit.AI to analyse the basic sentiments of the top 3 stocks to allow better understanding of the scrapped data.
+Scrapes data from Reddit from selected subreddits and filters the top 30 penny stocks based on number of mentions. I then use Wit.AI to analyse the basic sentiments of the top 3 stocks to allow better understanding of the scrapped data.
 
 These data are then displayed on a simple React website. 
 
 --- 
 ## Backend
-
 ### Reddit API
-* Retrieve your Reddit API here
+* Retrieve your Reddit API [here](https://www.reddit.com/prefs/apps)
 * Create an app: 
 * Go to `/backend` directory 
 * Create a `praw.ini` file with:
