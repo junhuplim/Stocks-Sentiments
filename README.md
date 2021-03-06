@@ -7,7 +7,7 @@ These data are then displayed on a simple React website.
 ## Backend
 ### Reddit API
 * Retrieve your Reddit API [here](https://www.reddit.com/prefs/apps)
-* Create an app: 
+* From above link, create an app at the bottom of the page
 * Go to `/backend` directory 
 * Create a `praw.ini` file with:
 ```python
@@ -17,10 +17,10 @@ client_secret=<27 CHARACTER SECRET>
 user_agent=<YOUR APP NAME>
 ```
 ### To start backend
-* Create new conda env `conda create env reddit_stocks`
-* Activate newly created env with `conda activate reddit_stocks` 
+* Create new conda env `conda create --n reddit_sentiments`
+* Activate newly created env with `conda activate reddit_sentiments` 
 * Install required modules using `pip install -r requriements.txt`
-* Run `server.py`
+* Run `python server.py`
 * You will be able to see your csv files results in `backend/data` directory
 
 ### Wit.AI API
