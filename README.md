@@ -19,6 +19,7 @@ user_agent=<YOUR APP NAME>
 ### To start backend
 * Create new conda env `conda create --n reddit_sentiments`
 * Activate newly created env with `conda activate reddit_sentiments` 
+* Go to backend directory with `cd backend`
 * Install required modules using `pip install -r requriements.txt`
 * Run `python server.py`
 * You will be able to see your csv files results in `backend/data` directory

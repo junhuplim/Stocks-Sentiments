@@ -1,0 +1,35 @@
+brotlipy==0.7.0
+certifi==2020.12.5
+cffi @ file:///Users/runner/miniforge3/conda-bld/cffi_1613413892199/work
+chardet @ file:///Users/runner/miniforge3/conda-bld/chardet_1610093613037/work
+click==7.1.2
+cryptography @ file:///Users/runner/miniforge3/conda-bld/cryptography_1612993770134/work
+Flask==1.1.2
+Flask-Cors @ file:///home/conda/feedstock_root/build_artifacts/flask_cors_1609901734655/work
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1593328102638/work
+itsdangerous==1.1.0
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1612119311452/work
+lxml==4.6.2
+MarkupSafe @ file:///Users/runner/miniforge3/conda-bld/markupsafe_1610127727012/work
+multitasking==0.0.9
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1612953049088/work
+pandas==1.2.2
+praw @ file:///home/conda/feedstock_root/build_artifacts/praw_1588468450379/work
+prawcore @ file:///home/conda/feedstock_root/build_artifacts/prawcore_1588466065629/work
+prompt-toolkit==3.0.16
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
+PySocks @ file:///Users/runner/miniforge3/conda-bld/pysocks_1610291470465/work
+python-dateutil==2.8.1
+python-dotenv==0.15.0
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1612179539967/work
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1608156231189/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1590081179328/work
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1614279180094/work
+update-checker @ file:///home/conda/feedstock_root/build_artifacts/update_checker_1596529541613/work
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1611695416663/work
+wcwidth==0.2.5
+websocket-client @ file:///Users/runner/miniforge3/conda-bld/websocket-client_1610127894508/work
+Werkzeug==1.0.1
+wit==6.0.0
+yfinance==0.1.55
