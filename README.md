@@ -16,13 +16,6 @@ client_id=<14 CHARACTER PERSONAL USE SCRIPT>
 client_secret=<27 CHARACTER SECRET>
 user_agent=<YOUR APP NAME>
 ```
-### To start backend
-* Create new conda env `conda create --n reddit_sentiments`
-* Activate newly created env with `conda activate reddit_sentiments` 
-* Go to backend directory with `cd backend`
-* Install required modules using `pip install -r requriements.txt`
-* Run `python server.py`
-* You will be able to see your csv files results in `backend/data` directory
 
 ### Wit.AI API
 * Go to Wit.AI and create an App 
@@ -33,6 +26,15 @@ client = Wit(WIT_ACCESS_TOKEN)
 resp = client.message('hello')
 ```
 * Follow this [Wit.AI Quick Start Docs](https://wit.ai/docs/quickstart) to train your Wit.AI app
+### To start backend
+* Create new conda env `conda create --n reddit_sentiments`
+* Activate newly created env with `conda activate reddit_sentiments` 
+* Go to backend directory with `cd backend`
+* Install required modules using `pip install -r requirements.txt`
+* Run `python server.py`
+* You will be able to see your csv files results in `backend/data` directory
+
+
 --- 
 Things to note: 
 * Always keep your API secrets (both Reddit and Wit.AI) secret
