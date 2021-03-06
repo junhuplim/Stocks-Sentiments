@@ -3,6 +3,7 @@ from wit import Wit
 from pathlib import Path
 import datetime as dt
 from dotenv import load_dotenv
+import emoji
 
 load_dotenv()   
 WIT_ACCESS_TOKEN = os.getenv("WIT_ACCESS_TOKEN")
@@ -12,23 +13,23 @@ class WitAnalysis:
     def __init__(self):
         self.client = Wit(WIT_ACCESS_TOKEN)
     
-    def deEmojify(self, text):
-        regrex_pattern = re.compile(pattern = "["
-            u"\U0001F600-\U0001F64F"  # emoticons
-            u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-            u"\U0001F680-\U0001F6FF"  # transport & map symbols
-            u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-                            "]+", flags = re.UNICODE)
-        return regrex_pattern.sub(r'',text)
-        
     def extract_sentiments(self, title):
-        resp = self.client.message(self.deEmojify(title))
+        has_emoji = bool(emoji.get_emoji_regexp().search(title))
+        if has_emoji:
+            return None
+        resp = self.client.message(title)
         return resp
 
     def extract_intents(self, sentiment):
+        if not sentiment:
+            return None
+        if len(sentiment['intents']) == 0:
+            return ''
         return sentiment['intents']
     
     def extract_traits(self, sentiment):
+        if not sentiment:
+            return None
         if len(sentiment['traits']) == 0:
             return ''
         return sentiment['traits']['wit$sentiment'][0]['value']
